@@ -4,11 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_absensi_app/core/ml/recognition_embedding.dart';
 import 'package:flutter_absensi_app/core/ml/recognizer.dart';
-// import 'package:flutter_absensi_app/presentation/home/bloc/checkin_attendance/checkin_attendance_bloc.dart';
 import 'package:flutter_absensi_app/presentation/home/bloc/checkout_attendance/checkout_attendance_bloc.dart';
 import 'package:flutter_absensi_app/presentation/home/pages/attendance_success_page.dart';
 import 'package:flutter_absensi_app/presentation/home/pages/location_page.dart';
-import 'package:flutter_absensi_app/presentation/home/pages/main_page.dart';
 import 'package:flutter_absensi_app/presentation/home/widgets/face_detector_painter.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_mlkit_face_detection/google_mlkit_face_detection.dart';
@@ -160,7 +158,6 @@ class _AttendanceCheckoutPageState extends State<AttendanceCheckoutPage> {
       for (var h = 0; h < height; h++) {
         final uvIndex =
             uvPixelStride * (w / 2).floor() + uvRowStride * (h / 2).floor();
-        final index = h * width + w;
         final yIndex = h * yRowStride + w;
 
         final y = cameraImage.planes[0].bytes[yIndex];

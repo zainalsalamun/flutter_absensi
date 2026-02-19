@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_absensi_app/core/constants/variables.dart';
 import 'package:image_picker/image_picker.dart';
 
-import '../assets/assets.gen.dart';
 import '../constants/colors.dart';
 import 'buttons.dart';
 import 'spaces.dart';
