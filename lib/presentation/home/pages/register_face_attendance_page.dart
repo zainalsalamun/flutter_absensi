@@ -9,7 +9,6 @@ import 'package:flutter_absensi_app/core/constants/colors.dart';
 import 'package:flutter_absensi_app/core/ml/recognition_embedding.dart';
 import 'package:flutter_absensi_app/core/ml/recognizer.dart';
 import 'package:flutter_absensi_app/data/datasources/auth_local_datasource.dart';
-import 'package:flutter_absensi_app/presentation/auth/bloc/logout/logout_bloc.dart';
 import 'package:flutter_absensi_app/presentation/home/bloc/update_user_register_face/update_user_register_face_bloc.dart';
 import 'package:flutter_absensi_app/presentation/home/pages/main_page.dart';
 import 'package:flutter_absensi_app/presentation/home/widgets/face_detector_painter.dart';
