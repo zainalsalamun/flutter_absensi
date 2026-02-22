@@ -1,16 +1,84 @@
-# flutter_absensi_app
+# 📱 Smart Attendance System (Absensi App)
 
-A new Flutter project.
+Aplikasi Presensi cerdas berbasis Flutter yang menggunakan teknologi Face Detection (Pengenalan Wajah) dan validasi titik lokasi Radius (GPS) untuk mendata kehadiran karyawan secara *real-time* dan mencegah kecurangan.
 
-## Getting Started
+## ✨ Fitur Utama
 
-This project is a starting point for a Flutter application.
+- **Face ID Attendance**: Mendata absen Datang dan Pulang menggunakan deteksi wajah di kamera secara mandiri (Selfie).
+- **Verifikasi Lokasi Geofencing**: Validasi ketat membandingkan koordinat perangkat *(device location)* dengan batas radius kantor yang disetel di server pusat. Memblokir absen bila terdeteksi lokasi palsu *(Mock Location)*.
+- **Smart Dashboard**: Panel interaktif *Premium UI* yang menampilkan Waktu Server *real-time* (Stream) dan Jadwal Shift Karyawan.
+- **Reimbursement System**: Formulir digital terintegrasi untuk mengajukan *reimbursement* / klaim biaya kepada perusahaan lengkap dengan foto bukti transaksi.
+- **Menu Cepat**: Pengajuan izin kerja/tidak masuk, catatan tugas, absen lembur langsung di layar utama dengan animasi halus.
+- **Update Profile**: Pengaturan khusus karyawan seperti foto profil, sinkronisasi *email* dan pelacakan riwayat versi aplikasi.
 
-A few resources to get you started if this is your first Flutter project:
+---
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## 🚀 Getting Started (Persiapan Awal)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Untuk menjalankan proyek ini di *local machine* (komputer) Anda, pastikan Anda telah memasang Flutter SDK, lalu jalankan perintah berikut:
+
+1. Tarik repository proyek *(Clone)* dan masuk ke direktori folder.
+2. Unduh semua paket/dependensi yang dibutuhkan:
+```bash
+flutter pub get
+```
+
+3. **Catatan Khusus**: Proyek ini menggunakan `build_runner` untuk proses generator (seperti kode `freezed` model atau aset ikon SVG):
+```bash
+flutter pub run build_runner build --delete-conflicting-outputs
+```
+
+4. Jalankan aplikasi di emulator atau perangkat fisik (pastikan mode Debugging USB aktif untuk tes kamera):
+```bash
+flutter run
+```
+
+---
+
+## 📦 Cara Build Release / Build APK
+
+Saat tahap *development* selesai dan Anda butuh mendistribusikannya ke pengguna langsung sebagai aplikasi `.apk` (teroptimasi, lancar, no-debug banner), gunakan perintah di bawah ini:
+
+### Membangun Berkas APK (Standar/Universal)
+Jalankan perintah flutter ini di root terminal proyek Anda untuk membuat 1 APK gabungan (ukurannya besar, mendukung semua perangkat):
+```bash
+flutter build apk --release
+```
+🌟 **Hasil Output:** 👉 `build/app/outputs/flutter-apk/app-release.apk`
+
+### Membangun Berkas APK per Arsitektur (armeabi-v7a / arm64 - Jauh Lebih Ringan)
+Jika Anda ingin ukuran APK *(file size)* yang jauh lebih kecil dan dioptimalkan hanya untuk tipe memori *chipset* HP modern (**arm**), gunakan opsi pemecah (split) ini:
+```bash
+flutter build apk --release --split-per-abi
+```
+🌟 **Hasil Output:** Perintah ini akan melahirkan 3 file APK terpisah di dalam folder 👉 `build/app/outputs/flutter-apk/`.
+*(Tip Pintar: Anda cukup mendistribusikan file `app-arm64-v8a-release.apk` atau `app-armeabi-v7a-release.apk` ke pengguna. Ukurannya bisa menyusut drastis dari 100MB+ menjadi hanya puluhan MB saja!)*
+
+*Jika ingin langsung dipasang (install) lewat kabel kabel data ke HP yang sedang menyolok:*
+```bash
+flutter install
+```
+
+### Membangun Android App Bundle (AAB untuk Google PlayStore)
+Jika Anda hendak mengunggahnya ke lisensi Google PlayStore:
+```bash
+flutter build appbundle --release
+```
+
+---
+
+## 🛠 Troubleshooting (Masalah Umum)
+
+Jika menjumpai Error aneh atau *Crash* tiba-tiba saat mencoba mem-build (misalnya gagal kompilasi R8/ProGuard):
+```bash
+# Untuk membersihkan cache mesin build Android
+flutter clean
+flutter pub get
+
+# Untuk melihat Log error secara lengkap jika build apk terhambat
+cd android
+./gradlew assembleRelease --stacktrace
+```
+
+> **Catatan Debug**: Karena proyek ini sangat bergantung pada izin Kamera dan GPS Lokasi, pengujian di perangkat asli/fisik *sangat disarankan* daripada menggunakan Emulator Android murni.
+
