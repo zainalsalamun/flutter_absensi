@@ -28,7 +28,12 @@ flutter pub get
 flutter pub run build_runner build --delete-conflicting-outputs
 ```
 
-4. Jalankan aplikasi di emulator atau perangkat fisik (pastikan mode Debugging USB aktif untuk tes kamera):
+4. **Generate Launcher Icons**: Perintah ini digunakan untuk memperbarui ikon aplikasi di Android & iOS menggunakan aset yang baru:
+```bash
+flutter pub run flutter_launcher_icons:main
+```
+
+5. Jalankan aplikasi di emulator atau perangkat fisik (pastikan mode Debugging USB aktif untuk tes kamera):
 ```bash
 flutter run
 ```
@@ -44,7 +49,7 @@ Jalankan perintah flutter ini di root terminal proyek Anda untuk membuat 1 APK g
 ```bash
 flutter build apk --release
 ```
-🌟 **Hasil Output:** 👉 `build/app/outputs/flutter-apk/app-release.apk`
+🌟 **Hasil Output:** 👉 `build/app/outputs/apk/release/Absensi-v1.0.0.apk`
 
 ### Membangun Berkas APK per Arsitektur (armeabi-v7a / arm64 - Jauh Lebih Ringan)
 Jika Anda ingin ukuran APK *(file size)* yang jauh lebih kecil dan dioptimalkan hanya untuk tipe memori *chipset* HP modern (**arm**), gunakan opsi pemecah (split) ini:
@@ -59,11 +64,13 @@ flutter build apk --release --split-per-abi
 flutter install
 ```
 
-### Membangun Android App Bundle (AAB untuk Google PlayStore)
-Jika Anda hendak mengunggahnya ke lisensi Google PlayStore:
+### Membangun Android App Bundle (AAB untuk Google Play Store)
+
+Format `.aab` adalah format standar yang wajib digunakan jika Anda hendak mengunggah aplikasi ke **Google Play Store**. Format ini akan memampatkan ukuran aplikasi secara otomatis saat pengguna mengunduhnya di Play Store:
 ```bash
 flutter build appbundle --release
 ```
+🌟 **Hasil Output:** 👉 `build/app/outputs/bundle/release/app-release.aab`
 
 ---
 
@@ -82,3 +89,8 @@ cd android
 
 > **Catatan Debug**: Karena proyek ini sangat bergantung pada izin Kamera dan GPS Lokasi, pengujian di perangkat asli/fisik *sangat disarankan* daripada menggunakan Emulator Android murni.
 
+---
+
+## 📖 Panduan Penggunaan
+Untuk panduan lengkap cara menggunakan aplikasi bagi karyawan (User Manual), silakan baca:
+👉 **[USER_GUIDE.md](./USER_GUIDE.md)**
